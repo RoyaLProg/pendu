@@ -12,10 +12,20 @@ void	write_nbr(unsigned int v)
 	write_nbr(v % 10);
 }
 
+int	ft_strlen(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != 0)
+		i++;
+	return (i);
+}
+
 int	count_word(const char *dict)
 {
-	int	count;
-	int	file;
+	int		count;
+	int		file;
 	char	c;
 
 	file = open(dict, O_RDONLY);
@@ -35,4 +45,3 @@ char	getc(char c)
 		if (read(2, &c, 1) && c != 0)
 			return (c);
 }
-
