@@ -28,3 +28,11 @@ int	count_word(const char *dict)
 	close(file);
 	return (count);
 }
+
+char	getc(char c)
+{
+	while (1)
+		if (read(2, &c, 1) && c != 0)
+			return (c);
+}
+
