@@ -39,9 +39,22 @@ int	count_word(const char *dict)
 	return (count);
 }
 
-char	getc(char c)
+char	ft_getc(char c)
 {
 	while (1)
 		if (read(2, &c, 1) && c != 0)
 			return (c);
+}
+
+void	ft_strcpy(char *dest, char *src)
+{
+	int	i;
+
+	i = 0;
+	while (src[i] != 0)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = 0;
 }

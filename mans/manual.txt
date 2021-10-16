@@ -1,0 +1,22 @@
+***DICT_NORM
+
+Dictionary norm :
+- Dictionary must contain ONLY words
+- Dictionary must contain ONLY writeable charaters
+- Dictionary must only contain non-special charaters in lowercase (a - z)
+
+***USAGE
+
+usage : ./pendu [-m "man page"] [-h] [-d "dict name"]
+
+		-h show this message
+		-m show manual
+		-d use directory (default : src/words.list)
+
+***MANUALS
+
+posible manuals :
+
+- DICT_NORM : Dictionary norm
+- USAGE : default help
+- MANUALS : this page
