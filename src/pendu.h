@@ -3,7 +3,6 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
-# include <stdio.h>
 
 typedef struct s_game
 {
@@ -19,6 +18,7 @@ void	ft_putnbr(int nb);
 void	write_nbr(unsigned int v);
 void	affichage(char *word, char *guessed);
 void	ft_strcpy(char *dest, char *src);
+void	put_letter(char *word, char *guessed, int l)
 char	ft_getc(char c);
 int		count_word(const char *dict);
 int		ft_strlen(const char *str);

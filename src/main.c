@@ -18,6 +18,8 @@ int	main(int ac, char **av)
 		game.dict = malloc(11);
 		ft_strcpy(game.dict, "words.list");
 	}
+	game.guessed = malloc(27);
+	choose_word(game.dict, game.word);
 	free(game.dict);
 	free(game.word);
 	free(game.guessed);

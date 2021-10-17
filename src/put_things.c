@@ -19,3 +19,11 @@ void	ft_putnbr(int nb)
 	v = nb;
 	write_nbr(v);
 }
+
+void	put_letter(char *word, char *guessed, int l)
+{
+	if (is_guessed(word[l], guessed))
+		write(1, &word[l], 1);
+	else
+		ft_putstr("_");
+}

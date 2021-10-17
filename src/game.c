@@ -21,14 +21,6 @@ int	is_guessed(char c, char *guessed)
 	return (0);
 }
 
-void	put_letter(char *word, char *guessed, int l)
-{
-	if (is_guessed(word[l], guessed))
-		write(1, &word[l], 1);
-	else
-		ft_putstr("_");
-}
-
 void	affichage2(char *guessed, int i, int j, int len)
 {
 	char	*alph;
@@ -78,3 +70,21 @@ void	affichage(char *word, char *guessed)
 		j++;
 	}
 }	
+
+void	choose_word(char *dict, char *word)
+{
+	int		i;
+	int		fd;
+	int 	nb;
+	char	*line;
+	fd = open(dict, O_RDONLY);
+	nb = rand() % count_word(dict);
+	i = 0;
+	while(i < nb)
+	{
+		readline(fd, line);
+	}
+	word = malloc(ft_strlen(line));
+	ft_strcpy(word, line);
+	free(line);
+}
