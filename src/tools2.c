@@ -11,7 +11,7 @@ int	ft_strcmp(char *s1, char *s2)
 			return (s1[i] - s2[i]);
 		i++;
 	}
-	return (s1[i] - s2[i]);
+	return (0);
 }
 
 void	clear(void)
@@ -26,22 +26,22 @@ void	clear(void)
 	}
 }
 
-int	readline(int fd, char *buf)
+void	*readline(int fd, char *buf)
 {
 	char	c;
-	char	tmp[100];
+	char	tmp[500];
 	int		i;
 
 	i = 0;
-	while (read(fd, &c, 1) && (c != '\n' || c != 0))
+	while (read(fd, &c, 1) && (c != '\n' && c != 0))
 	{
 		tmp[i] = c;
 		tmp[i + 1] = 0;
 		i++;
 	}
-	buf = malloc(ft_strlen(tmp));
-	if (!buf)
+	buf = malloc(ft_strlen(tmp) + 1);
+	if (buf == NULL)
 		return (0);
 	ft_strcpy(buf, tmp);
-	return (1);
+	return (buf);
 }

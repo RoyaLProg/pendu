@@ -3,6 +3,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
+# include <time.h>
 
 typedef struct s_game
 {
@@ -18,12 +19,16 @@ void	ft_putnbr(int nb);
 void	write_nbr(unsigned int v);
 void	affichage(char *word, char *guessed);
 void	ft_strcpy(char *dest, char *src);
-void	put_letter(char *word, char *guessed, int l)
+void	put_letter(char *word, char *guessed, int l);
+void	ft_game(t_game game);
 char	ft_getc(char c);
+int		parse_flag(int ac, char **av, char *dict);
+int		get_man(char *asked);
+int		is_guessed(char c, char *guessed);
 int		count_word(const char *dict);
 int		ft_strlen(const char *str);
 int		verif_dict(char *dict);
 int		ft_strcmp(char *s1, char *s2);
-int		readline(int fd, char *buf);
+void	*readline(int fd, char *buf);
 
 #endif

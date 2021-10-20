@@ -1,26 +1,5 @@
 #include "pendu.h"
 
-int	is_guessed(char c, char *guessed)
-{
-	int	i;
-	int	len;
-	int	adjust;
-
-	len = ft_strlen(guessed);
-	if (c >= 'A' && c <= 'Z')
-		adjust = 32;
-	else
-		adjust = -32;
-	i = 0;
-	while (i < len)
-	{
-		if (c == guessed[i] || c + adjust == guessed[i])
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
 void	affichage2(char *guessed, int i, int j, int len)
 {
 	char	*alph;
@@ -75,16 +54,67 @@ void	choose_word(char *dict, char *word)
 {
 	int		i;
 	int		fd;
-	int 	nb;
+	int		nb;
 	char	*line;
-	fd = open(dict, O_RDONLY);
+
+	srand(time(NULL));
+	line = NULL;
 	nb = rand() % count_word(dict);
-	i = 0;
-	while(i < nb)
+	i = -1;
+	fd = open(dict, O_RDONLY);
+	if (fd == -1)
+		return ;
+	while (++i < nb)
 	{
-		readline(fd, line);
+		line = readline(fd, line);
+		if (line[0] == 0)
+			return ;
+		free(line);
 	}
-	word = malloc(ft_strlen(line));
+	word = malloc(ft_strlen(line) + 1);
+	if (word == NULL)
+		return ;
 	ft_strcpy(word, line);
 	free(line);
+	close(fd);
+}
+
+int	finish(char *word, char *guessed)
+{
+	int	i;
+
+	i = 0;
+	while (i < ft_strlen(word))
+	{
+		if (!is_guessed(word[i], guessed))
+			return (0);
+	}
+	return (1);
+}
+
+void	ft_game(t_game game)
+{
+	int		count;
+	char	c;
+
+	count = 0;
+	c = 0;
+	choose_word(game.dict, game.word);
+	while (!finish(game.word, game.guessed))
+	{
+		ft_putstr("Try : ");
+		ft_putnbr(count);
+		ft_putstr("\n\n\n");
+		affichage(game.word, game.guessed);
+		ft_putstr("\n\n\nPress any caraters on your keyboard");
+		ft_getc(c);
+		if (!is_guessed(c, game.guessed))
+		{
+			game.guessed[count] = c;
+			count++;
+		}
+		else
+			ft_putstr("charater already guessed");
+		clear();
+	}
 }

@@ -30,9 +30,9 @@ int	count_word(const char *dict)
 
 	file = open(dict, O_RDONLY);
 	if (file == -1)
-		return (0);
+		return (1);
 	count = 0;
-	while (c != 0 && read(file, &c, 1))
+	while (read(file, &c, 1))
 		if (c == '\n')
 			count++;
 	close(file);
@@ -54,7 +54,7 @@ void	ft_strcpy(char *dest, char *src)
 	while (src[i] != 0)
 	{
 		dest[i] = src[i];
+		dest[i + 1] = 0;
 		i++;
 	}
-	dest[i] = 0;
 }
