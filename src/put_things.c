@@ -1,6 +1,6 @@
 #include "pendu.h"
 
-void	ft_putstr(const char *str)
+/*void	ft_putstr(const char *str)
 {
 	int	i;
 
@@ -18,7 +18,7 @@ void	ft_putnbr(int nb)
 
 	v = nb;
 	write_nbr(v);
-}
+}*/
 
 void	put_letter(char *word, char *guessed, int l)
 {

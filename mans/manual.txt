@@ -15,8 +15,10 @@ usage : ./pendu [-m "man page"] [-h] [-d "dict name"]
 
 ***MANUALS
 
-posible manuals :
+possible manuals :
 
 - DICT_NORM : Dictionary norm
 - USAGE : default help
 - MANUALS : this page
+
+***EOF

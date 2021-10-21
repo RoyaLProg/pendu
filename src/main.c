@@ -9,16 +9,21 @@ int	main(int ac, char **av)
 	game.word = NULL;
 	if (ac >= 2)
 	{
-		if (!parse_flag(ac, av, game.dict))
+		if (!parse_flag(ac, av))
 			return (1);
+		game.dict = get_dict(game.dict, av);
 	}
-	else
+	if (game.dict == NULL)
 	{
-		game.dict = malloc(11);
-		ft_strcpy(game.dict, "words.list");
+		game.dict = malloc(15);
+		ft_strcpy(game.dict, "src/words.list");
 	}
-	game.guessed = malloc(27);
-	ft_game(game);
+	if (verif_dict(game.dict))
+	{
+		game.word = choose_word(game.dict, game.word);
+		game.guessed = malloc(27);
+		ft_game(game.word, game.guessed);
+	}
 	free(game.dict);
 	free(game.word);
 	free(game.guessed);

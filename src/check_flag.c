@@ -21,31 +21,24 @@ int	is_know_flag(char *flag)
 	return (0);
 }
 
-int	retrieve_flag(char **av, int i, char *dict)
+int	retrieve_flag(char **av, int i, int ac)
 {
-	if (ft_strcmp(av[i], "-d") == 0)
-	{
-		dict = malloc(ft_strlen(av[i + 1]));
-		if (dict == NULL)
-			return (0);
-		ft_strcpy(dict, av[i + 1]);
-		return (1);
-	}
-	else if (ft_strcmp(av[i], "-h") == 0)
-	{
+	if (ft_strcmp(av[i], "-h") == 0)
 		get_man("USAGE");
-		return (0);
-	}
-	else if (ft_strcmp(av[i], "-m"))
+	else if (ft_strcmp(av[i], "-m") == 0)
 	{
-		if (!get_man(av[i + 1]))
+		if (i + 1 < ac)
+		{
+			if (!get_man(av[i + 1]))
+				get_man("MANUALS");
+		}
+		else if (!get_man(av[i + 1]) || i + 1 >= ac)
 			get_man("MANUALS");
-		return (1);
 	}
-	return (0);
+	return (1);
 }
 
-int	parse_flag(int ac, char **av, char *dict)
+int	parse_flag(int ac, char **av)
 {
 	int	i;
 
@@ -54,7 +47,7 @@ int	parse_flag(int ac, char **av, char *dict)
 	{
 		if (is_know_flag(av[i]))
 		{
-			if (retrieve_flag(av, i, dict))
+			if (retrieve_flag(av, i, ac))
 				i += 2;
 			else
 				return (0);

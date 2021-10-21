@@ -1,27 +1,5 @@
 #include "pendu.h"
 
-void	write_nbr(unsigned int v)
-{
-	if (v < 10)
-	{
-		v += 48;
-		write(1, &v, 1);
-		return ;
-	}
-	write_nbr(v / 10);
-	write_nbr(v % 10);
-}
-
-int	ft_strlen(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != 0)
-		i++;
-	return (i);
-}
-
 int	count_word(const char *dict)
 {
 	int		count;

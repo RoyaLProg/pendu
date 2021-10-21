@@ -6,19 +6,20 @@ int	verif_dict(char *dict)
 	char	c;
 
 	fd = open(dict, O_RDONLY);
-	if (!fd)
+	if (fd == -1)
 	{
 		ft_putstr("Error : Could'nt open dict file\n");
 		return (0);
 	}
-	while (read(1, &c, 1))
+	while (read(fd, &c, 1) && c != 0)
 	{
-		if ((c < 'a' || c > 'z') && (c != '\n' && c != '0'))
+		write(1, &c, 1);
+		if ((c < 'a' || c > 'z') && (c != 10 && c != 13))
 		{
-			ft_putstr("Dictionary not in norm");
-			ft_putstr("(use flag \"-m dict_norm\" to see more)\n");
+			ft_printf("	Dictionary not in norm \
+(use flag \"-m DICT_NORM\" to see more)\n");
+			close(fd);
 			return (0);
-			break ;
 		}
 	}
 	close(fd);
@@ -31,6 +32,8 @@ int	is_guessed(char c, char *guessed)
 	int	len;
 	int	adjust;
 
+	if (guessed[0] == 0)
+		return (0);
 	len = ft_strlen(guessed);
 	if (c >= 'A' && c <= 'Z')
 		adjust = 32;

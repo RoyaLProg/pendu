@@ -19,25 +19,28 @@ void	clear(void)
 	int	i;
 
 	i = 0;
-	while (i < 10000)
+	while (i < 100)
 	{
 		ft_putstr("\e[1;1H\e[2J");
 		i++;
 	}
 }
 
-void	*readline(int fd, char *buf)
+void	*readline(int *fd, char *buf)
 {
 	char	c;
 	char	tmp[500];
 	int		i;
 
 	i = 0;
-	while (read(fd, &c, 1) && (c != '\n' && c != 0))
+	while (read(*fd, &c, 1) && (c != '\n' && c != 0))
 	{
-		tmp[i] = c;
-		tmp[i + 1] = 0;
-		i++;
+		if (c != 13)
+		{
+			tmp[i] = c;
+			tmp[i + 1] = 0;
+			i++;
+		}
 	}
 	buf = malloc(ft_strlen(tmp) + 1);
 	if (buf == NULL)
