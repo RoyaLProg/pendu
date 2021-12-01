@@ -3,7 +3,8 @@
 Dictionary norm :
 - Dictionary must contain ONLY words
 - Dictionary must contain ONLY writeable charaters
-- Dictionary must only contain non-special charaters in lowercase (a - z)
+- Dictionary must contain ONLY non-special charaters
+- Dictionary must contain ONLY word in lowercase (a - z) // may nah ?
 
 ***USAGE
 

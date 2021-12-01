@@ -35,7 +35,7 @@ int	retrieve_flag(char **av, int i, int ac)
 		else if (!get_man(av[i + 1]) || i + 1 >= ac)
 			get_man("MANUALS");
 	}
-	return (1);
+	return (0);
 }
 
 int	parse_flag(int ac, char **av)
