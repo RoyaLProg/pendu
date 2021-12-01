@@ -5,6 +5,7 @@ Un simple jeux de pendu codé en C
 # TODO LIST :
 
 Faire un sorte qu'il ne segfault pas avec certains flags !
+Ecrire le makefile et netoyer le repo...
 
 # FEATURE :
 
