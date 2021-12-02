@@ -11,7 +11,7 @@ SRCS=src/check_flag.c\
 		src/tools2.c\
 		src/verifications.c\
 		src/ft_printf.a
-all : fclean $(NAME)
+all : $(NAME)
 
 $(NAME) :
 	$(CC) $(SRCS) $(CFLAGS) -o $@
