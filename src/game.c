@@ -81,13 +81,18 @@ char	*choose_word(char *dict, char *word)
 
 int	finish(char *word, char *guessed, int count)
 {
-	int	i;
+	int		i;
+	char	c;
 
 	i = 0;
-	if (count > 1000)
+	if (count > 10)
 	{
+		while (1)
+			if (read(0, &c, 1) && c == '\n')
+				break ;
 		clear();
-		ft_printf("You loose :/");
+		ft_printf("You loose :/ \nPress Enter ...\n");
+		ft_getc(c);
 		return (1);
 	}
 	while (i < ft_strlen(word))
@@ -96,6 +101,12 @@ int	finish(char *word, char *guessed, int count)
 			return (0);
 		i++;
 	}
+	while (1)
+		if (read(0, &c, 1) && c == '\n')
+			break ;
+	clear();
+	ft_printf("Well played, you win ! \nPress Enter ...\n");
+	ft_getc(c);
 	return (1);
 }
 
