@@ -79,13 +79,13 @@ char	*choose_word(char *dict, char *word)
 	return (word);
 }
 
-int	finish(char *word, char *guessed, int count)
+int	finish(char *word, char *guessed, int tries)
 {
 	int		i;
 	char	c;
 
 	i = 0;
-	if (count > 10)
+	if (tries > 10)
 	{
 		while (1)
 			if (read(0, &c, 1) && c == '\n')
@@ -114,14 +114,16 @@ void	ft_game(char *word, char *guessed)
 {
 	int		count;
 	char	c;
+	int		tries;
 
 	guessed[0] = 0;
 	count = 0;
+	tries = 0;
 	c = 0;
 	while (!finish(word, guessed, count))
 	{
 		clear();
-		ft_printf("Try : %d\n\n\n", count);
+		ft_printf("Try : %d\n\n\n", tries);
 		affichage(word, guessed);
 		ft_printf("\n\n\nPress any caraters on your keyboard : ");
 		c = ft_getc(c);
@@ -132,6 +134,8 @@ void	ft_game(char *word, char *guessed)
 				guessed[count] = c;
 				guessed[count + 1] = 0;
 				count++;
+				if (!is_guessed(c, word))
+					tries++;
 			}
 		}
 	}
