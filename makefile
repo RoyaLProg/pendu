@@ -41,7 +41,7 @@ TITLE="\n $(BLUE)██████  ███████ ███    ██ �
 
 .SILENT:
 
-all : fclean $(NAME)
+all : $(NAME)
 
 $(NAME) : title
 	$(CC) $(SRCS) $(CFLAGS) -o $@
