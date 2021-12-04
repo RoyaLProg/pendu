@@ -11,9 +11,39 @@ SRCS=src/check_flag.c\
 		src/tools2.c\
 		src/verifications.c\
 		src/ft_printf.a
-all : $(NAME)
+ifneq (,$(findstring xterm,${TERM}))
+	BLACK        := $(shell tput -Txterm setaf 0)
+	RED          := $(shell tput -Txterm setaf 1)
+	GREEN        := $(shell tput -Txterm setaf 2)
+	YELLOW       := $(shell tput -Txterm setaf 3)
+	LIGHTPURPLE  := $(shell tput -Txterm setaf 4)
+	PURPLE       := $(shell tput -Txterm setaf 5)
+	BLUE         := $(shell tput -Txterm setaf 6)
+	WHITE        := $(shell tput -Txterm setaf 7)
+	RESET := $(shell tput -Txterm sgr0)
+else
+	BLACK        := ""
+	RED          := ""
+	GREEN        := ""
+	YELLOW       := ""
+	LIGHTPURPLE  := ""
+	PURPLE       := ""
+	BLUE         := ""
+	WHITE        := ""
+	RESET        := ""
+endif
+TITLE="\n $(BLUE)██████  ███████ ███    ██ ██████  ██    ██\n"\
+	"$(BLUE)██   ██ ██      ████   ██ ██   ██ ██    ██\n"\
+	"$(BLUE)██████  █████   ██ ██  ██ ██   ██ ██    ██\n"\
+	"$(BLUE)██      ██      ██  ██ ██ ██   ██ ██    ██\n"\
+	"$(BLUE)██      ███████ ██   ████ ██████   ██████ \n"\
+	"\n\n $(PURPLE)ᐅ $(YELLOW)Making something like $(GREEN)$(NAME) $(YELLOW)or a shitty thing $(RED)(╯°□°)╯︵ ┻━┻ $(RESET)\n\n"
 
-$(NAME) :
+.SILENT:
+
+all : fclean $(NAME)
+
+$(NAME) : title
 	$(CC) $(SRCS) $(CFLAGS) -o $@
 
 fclean :
@@ -21,3 +51,9 @@ fclean :
 clean :
 	rm pendu
 re : fclean $(NAME)
+
+title:clear
+	echo $(TITLE)
+
+clear:
+	clear
