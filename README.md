@@ -14,11 +14,15 @@ Faire un sorte qu'il ne segfault pas avec certains flags !
 
 # INSTALL :
 
-Tapez juste "make" et ça devrait crée un binaire "pendu"
+```
+git clone https://github.com/RoyaLProg/pendu.git"
+cd pendu
+make
+```
 
 # PLAY :  
 
-lancer le binaire : ./pendu
+lancer le binaire : `./pendu`
   
   
 Si vous avez des idées, n'hésitez pas a rédiger une issue ou à me contacter !
