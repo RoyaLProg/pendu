@@ -5,6 +5,8 @@ int	verif_dict(char *dict)
 	int		fd;
 	char	c;
 
+	if (!dict)
+		return (1);
 	fd = open(dict, O_RDONLY);
 	if (fd == -1)
 	{

@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS = -Werror -Wall -Wextra
+CFLAGS = -Werror -Wall -Wextra -g3
 NAME=pendu
 SRCS=src/check_flag.c\
 		src/dict.c\

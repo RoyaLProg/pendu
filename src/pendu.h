@@ -25,7 +25,7 @@ void	ft_printf(const char *str, ...);
 char	ft_getc(char c);
 char	*choose_word(char *word, char *dict);
 char	*get_dict(char *dict, char **av);
-int		parse_flag(int ac, char **av);
+int		parse_flag(char **av, t_game *game);
 int		get_man(char *asked);
 int		is_guessed(char c, char *guessed);
 int		count_word(const char *dict);
